@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>随机数Demo</title>
+		<script src="../libs/jquery-2.1.0.min.js"></script>
+		<script src="../build/Utils.js"></script>
+		<script src="../build/Device.js"></script>
+	</head>
+	<body>		
+		<div>I'm sure you know how watch the code</div>
+		<script>		
+		var random = new Utils();		
+		/*生成0到1之间的随机数*/
+		var r1 = random.getIntervalRandom();
+		console.log("0到1之间的随机数:",r1);
+		/*生成1到100的随机数*/
+		var r2 = random.getIntervalRandom(1,100);
+		console.log("1到100的随机数",r2);	
+		
+		var t1 = random.generateUUID();
+		console.log(t1)
+		var t2 = random.generateUUID(new Date().valueOf());
+		console.log(t2)
+		
+		
+		var device = new Device();
+		var s =	device.getSystem();
+		console.log(s);
+		</script>
+	</body>
+</html>
