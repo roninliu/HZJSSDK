@@ -31,6 +31,11 @@ var Device = function (_Utils) {
 
 	_createClass(Device, [{
 		key: "getSystem",
+
+		/**
+   * [getSystem 获取系统平台信息]
+   * @return {String} [平台系统名称]
+   */
 		value: function getSystem() {
 			var useragent = window.navigator.userAgent.toLowerCase();
 			console.log(useragent);
@@ -45,6 +50,26 @@ var Device = function (_Utils) {
 				}
 			} else {
 				return "pc";
+			}
+		}
+	}, {
+		key: "isWeiChat",
+
+		/**
+   * [isWeiChat 检测是否在微信浏览器中]
+   * @return {Boolean} [true | false]
+   */
+		value: function isWeiChat() {
+			var useragent = window.navigator.userAgent.toLowerCase();
+			console.log(useragent);
+			if (/mobile/i.test(useragent)) {
+				if (/micromessenger/i.test(_userAgent)) {
+					return true;
+				} else {
+					return false;
+				}
+			} else {
+				return false;
 			}
 		}
 	}]);
