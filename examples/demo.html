@@ -8,7 +8,8 @@
 		<script src="../build/Utils.js"></script>
 		<script src="../build/Device.js"></script>
 	</head>
-	<body>		
+	<body>
+		<a href="javascript:;" id="test">link 测试</a>
 		<div>I'm sure you know how watch the code</div>
 		<script>		
 		var random = new Utils();		
@@ -28,6 +29,13 @@
 		var device = new Device();
 		var s =	device.getSystem();
 		console.log(s);
+		console.log(random.parseURI());
+		console.log(random.getURIParamsByName("id"))
+		$("#test").click(function(){
+			url = "demo.html?a=1&b=2&c=3&url=http://aa.h.cm?id=2&h=2"
+			url = encodeURI(url);
+			console.log(url)
+		})
 		</script>
 	</body>
 </html>

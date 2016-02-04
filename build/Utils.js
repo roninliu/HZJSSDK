@@ -60,6 +60,66 @@ var Utils = function () {
 			});
 			return uuid;
 		}
+	}, {
+		key: 'parseURI',
+
+		/**
+   * [parseURI 获取url参数]
+   * @param  {String}  url [url地址：可选，默认浏览器地址]
+   * @return {Object}      [URL相关参数]
+   */
+		value: function parseURI() {
+			var url = arguments.length <= 0 || arguments[0] === undefined ? window.location.href : arguments[0];
+
+			var a = document.createElement("a");
+			a.href = url;
+			var params = {
+				source: url,
+				protocol: a.protocol.replace(':', ''),
+				host: a.hostname,
+				port: a.port,
+				query: a.search,
+				params: function () {
+					var ret = {};
+					var seg = a.search.replace(/^\?/, '').split('&');
+					var len = seg.length;
+					for (var i = 0; i < len; i++) {
+						if (!seg[i]) {
+							continue;
+						}
+						var s = seg[i].split('=');
+						ret[s[0]] = s[1];
+					}
+					return ret;
+				}(),
+				file: (a.pathname.match(/\/([^\/?#]+)$/i) || [, ''])[1],
+				hash: a.hash.replace('#', ''),
+				path: a.pathname.replace(/^([^\/])/, '/$1'),
+				relative: (a.href.match(/tps?:\/\/[^\/]+(.+)/) || [, ''])[1],
+				segments: a.pathname.replace(/^\//, '').split('/')
+			};
+			return params;
+		}
+	}, {
+		key: 'getURIParamsByName',
+		value: function getURIParamsByName(name) {
+			var url = arguments.length <= 1 || arguments[1] === undefined ? window.location.href : arguments[1];
+
+			var a = document.createElement("a");
+			a.href = url;
+			var query = a.search.replace(/\?/g, "&").substr(1).split("&");
+			//?a=111&d=23&url=http://222.cc.com?id=12&ddd=sdsd&3d=233
+			console.log(query);
+			for (var i = 0; i < query.length; i++) {
+				var temp = query[i].split("=");
+				if (temp[0] === name) {
+					return temp[1];
+				} else {
+					continue;
+				}
+			}
+			return null;
+		}
 	}]);
 
 	return Utils;

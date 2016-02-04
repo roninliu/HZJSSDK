@@ -1,17 +1,15 @@
 /**
  * ------------------------------------------------------------------
- * 判断设备平台，继承Utils
+ * 判断设备平台
  * @date     2016-01-30
  * @author   RoninLiu<roninliu@foxmail.com>
  * ------------------------------------------------------------------
  */
-class Device extends Utils {
+class Device {
 	/**
 	 * [constructor 构造函数]
 	 */
-	constructor() {
-		super();
-	};
+	constructor() {};
 	/**
 	 * [getSystem 获取系统平台信息]
 	 * @return {String} [平台系统名称]
